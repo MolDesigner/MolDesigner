@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="lang-en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis Ángel Urdez Rojas · AI for drug discovery</title>
+<meta name="description" content="Portfolio of Luis Ángel Urdez Rojas, pharmaceutical chemist and M.Sc. student in Artificial Intelligence (UAQ). Machine learning and cheminformatics for drug discovery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F7F8;
+    --ink: #1C2733;
+    --text: #333B45;
+    --muted: #66707B;
+    --rule: #D5DAE0;
+    --accent: #24527A;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14191F;
+      --ink: #E8ECF0;
+      --text: #C9D0D7;
+      --muted: #8D97A2;
+      --rule: #2C343D;
+      --accent: #8DB6DA;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  /* Language switch: hide the inactive language */
+  html.lang-en .es, html.lang-es .en { display: none; }
+
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Top bar */
+  .topbar {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding-top: 0.9rem; padding-bottom: 0.9rem; flex-wrap: wrap;
+  }
+  .topbar nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .topbar nav a { color: var(--muted); text-decoration: none; }
+  .topbar nav a:hover { color: var(--ink); }
+  .lang-switch { display: flex; gap: 0.25rem; }
+  .lang-switch button {
+    font: inherit; font-size: 0.9rem; cursor: pointer;
+    background: none; border: 1px solid var(--rule); color: var(--muted);
+    padding: 0.15rem 0.6rem; border-radius: 4px;
+  }
+  .lang-switch button[aria-pressed="true"] { color: var(--ink); border-color: var(--muted); font-weight: 600; }
+
+  /* Title page */
+  .title-page { padding: 4rem 0 2.5rem; }
+  .title-grid { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+  h1 {
+    font-weight: 600; color: var(--ink);
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    line-height: 1.2; margin: 0 0 1.5rem; letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .author { font-size: 1.2rem; color: var(--ink); margin: 0; }
+  .author sup, .affil sup { font-family: var(--sans); font-size: 0.7em; color: var(--muted); }
+  .affil {
+    list-style: none; padding: 0; margin: 0.4rem 0 0;
+    font-family: var(--sans); font-size: 0.95rem; color: var(--muted); line-height: 1.5;
+  }
+  .photo {
+    width: 140px; height: 175px; margin: 0;
+    border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    background: var(--rule); display: grid; place-items: center;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo.empty::after {
+    content: "LÁUR"; font-family: var(--sans); font-weight: 600;
+    color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  .epigraph {
+    margin: 2.5rem 0 0; padding-left: 1.25rem;
+    border-left: 2px solid var(--rule); font-style: italic; color: var(--muted);
+  }
+  .epigraph p { margin: 0; }
+  .epigraph cite { display: block; font-style: normal; font-family: var(--sans); font-size: 0.9rem; margin-top: 0.3rem; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; font-family: var(--sans); font-size: 0.95rem; }
+  .actions a {
+    text-decoration: none; padding: 0.45rem 0.9rem;
+    border: 1px solid var(--rule); border-radius: 4px; color: var(--ink);
+  }
+  .actions a.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .actions a:hover { border-color: var(--accent); }
+
+  /* Sections */
+  section { padding: 2.5rem 0; border-top: 1px solid var(--rule); }
+  h2 { font-size: 1.5rem; font-weight: 600; color: var(--ink); margin: 0 0 1.25rem; }
+  h3 { font-size: 1.2rem; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.35; }
+  p { margin: 0 0 1rem; }
+  .keywords { font-family: var(--sans); font-size: 0.95rem; color: var(--muted); }
+  .keywords strong { color: var(--text); font-weight: 600; }
+
+  /* Projects */
+  .project { padding: 1.5rem 0; }
+  .project + .project { border-top: 1px dashed var(--rule); }
+  .meta { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); margin: 0.2rem 0 0.75rem; }
+  .status { font-weight: 600; }
+  .status.ongoing { color: var(--accent); }
+  .detail { font-size: 1rem; margin: 0 0 0.4rem; }
+  .detail b { font-family: var(--sans); font-weight: 600; color: var(--ink); font-size: 0.95rem; }
+  .links { font-family: var(--sans); font-size: 0.95rem; margin-top: 0.6rem; }
+
+  /* Marks content still to be filled in */
+  .pending {
+    color: var(--muted); font-family: var(--sans); font-size: 0.9em;
+    border-bottom: 1px dashed var(--muted);
+  }
+
+  /* Timeline-style entries (education, experience, presentations) */
+  .entry { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .entry .when { font-family: var(--sans); font-size: 0.95rem; color: var(--muted); padding-top: 0.15rem; }
+  .entry p { margin: 0.15rem 0 0; font-size: 1rem; }
+
+  .contact-list { list-style: none; padding: 0; margin: 0; font-family: var(--sans); }
+  .contact-list li { margin-bottom: 0.4rem; }
+  .contact-list span { color: var(--muted); display: inline-block; min-width: 6rem; }
+
+  footer { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); padding: 2rem 0 3rem; border-top: 1px solid var(--rule); }
+
+  @media (max-width: 600px) {
+    body { font-size: 1.05rem; }
+    .title-page { padding-top: 2.5rem; }
+    .title-grid { grid-template-columns: 1fr; }
+    .photo { order: -1; width: 110px; height: 138px; }
+    .entry { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <nav aria-label="Sections">
+      <a href="#about"><span class="en">About</span><span class="es">Perfil</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+      <a href="#education"><span class="en">Education</span><span class="es">Formación</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- Title page, laid out like the first page of a paper -->
+  <div class="title-page">
+    <div class="title-grid">
+      <div>
+        <h1>
+          <span class="en">AI for drug discovery: from molecular graphs to candidate prioritization</span>
+          <span class="es">IA para el descubrimiento de fármacos: de los grafos moleculares a la priorización de candidatos</span>
+        </h1>
+        <p class="author">Luis Ángel Urdez Rojas<sup>1,2</sup></p>
+        <ul class="affil">
+          <li><sup>1</sup>
+            <span class="en">M.Sc. in Artificial Intelligence (in progress), Faculty of Engineering, Autonomous University of Querétaro</span>
+            <span class="es">Maestría en Ciencias en Inteligencia Artificial (en curso), Facultad de Ingeniería, Universidad Autónoma de Querétaro</span>
+          </li>
+          <li><sup>2</sup>
+            <span class="en">B.Sc. in Pharmaceutical Chemistry and Biology (QFB), Faculty of Chemistry, Autonomous University of Querétaro</span>
+            <span class="es">Licenciatura en Químico Farmacéutico Biólogo, Facultad de Química, Universidad Autónoma de Querétaro</span>
+          </li>
+        </ul>
+      </div>
+      <figure class="photo">
+        <!-- Save your photo as assets/foto.jpg (portrait, about 4:5) -->
+        <img src="assets/foto.jpg" alt="Luis Ángel Urdez Rojas"
+             onerror="this.parentElement.classList.add('empty'); this.remove();">
+      </figure>
+    </div>
+
+    <blockquote class="epigraph">
+      <p>“Knowing without seeing is at the heart of chemistry.”</p>
+      <cite>Roald Hoffmann</cite>
+    </blockquote>
+
+    <div class="actions">
+      <!-- Save your CV as assets/CV_Angel_Urdez.pdf -->
+      <a class="primary" href="assets/CV_Angel_Urdez.pdf" target="_blank" rel="noopener">
+        <span class="en">Download CV (PDF)</span><span class="es">Descargar CV (PDF)</span>
+      </a>
+      <a href="https://github.com/MolDesigner" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/luis-%C3%A1ngel-urdez-rojas-203253301/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:langelur7@gmail.com">
+        <span class="en">Email me</span><span class="es">Escríbeme</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <h2><span class="en">Abstract</span><span class="es">Resumen</span></h2>
+    <p class="en">
+      I am a pharmaceutical chemist pursuing an M.Sc. in Artificial Intelligence at the
+      Autonomous University of Querétaro. I build computational pipelines that find and rank
+      drug candidates, combining cheminformatics, molecular simulation and deep learning.
+      My current research uses multitask graph neural networks to prioritize molecules
+      against <i>Staphylococcus aureus</i>.
+    </p>
+    <p class="es">
+      Soy Químico Farmacéutico Biólogo y curso la Maestría en Ciencias en Inteligencia Artificial
+      en la Universidad Autónoma de Querétaro. Desarrollo flujos computacionales para identificar
+      y priorizar candidatos a fármaco, combinando quimioinformática, simulación molecular y
+      aprendizaje profundo. Mi investigación actual usa redes neuronales de grafos multitarea para
+      priorizar moléculas contra <i>Staphylococcus aureus</i>.
+    </p>
+    <p class="keywords">
+      <strong><span class="en">Keywords:</span><span class="es">Palabras clave:</span></strong>
+      <span class="en">graph neural networks; multitask learning; generative models; cheminformatics; molecular docking; molecular dynamics</span>
+      <span class="es">redes neuronales de grafos; aprendizaje multitarea; modelos generativos; quimioinformática; acoplamiento molecular; dinámica molecular</span>
+    </p>
+    <p class="keywords">
+      <strong><span class="en">Tools:</span><span class="es">Herramientas:</span></strong>
+      Python, NumPy, PyTorch, RDKit, GNINA, AutoDock-GPU, Desmond, ProLIF, Google Colab, LaTeX, Linux
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2><span class="en">Projects</span><span class="es">Proyectos</span></h2>
+
+    <article class="project">
+      <h3>
+        <span class="en">Multitask graph neural networks to prioritize molecules against <i>S. aureus</i></span>
+        <span class="es">Redes neuronales de grafos multitarea para priorizar moléculas contra <i>S. aureus</i></span>
+      </h3>
+      <p class="meta">
+        <span class="status ongoing"><span class="en">In progress</span><span class="es">En desarrollo</span></span>
+        <span class="en">· M.Sc. thesis</span><span class="es">· Tesis de maestría</span>
+      </p>
+      <p class="en">Predicting antibacterial activity from molecular structure, learning several related tasks at once so that each task helps the others.</p>
+      <p class="es">Predicción de actividad antibacteriana a partir de la estructura molecular, aprendiendo varias tareas relacionadas a la vez para que cada una ayude a las demás.</p>
+      <p class="detail"><b><span class="en">Data:</span><span class="es">Datos:</span></b> PubChem AID 602399 <span class="pending">[PENDING: other datasets]</span></p>
+      <p class="detail"><b><span class="en">Methods:</span><span class="es">Métodos:</span></b> RDKit <span class="pending">[PENDING: GNN library and architecture]</span></p>
+      <p class="detail"><b><span class="en">Result:</span><span class="es">Resultado:</span></b> <span class="pending">[PENDING]</span></p>
+    </article>
+
+    <article class="project">
+      <h3>
+        <span class="en"><i>In silico</i> identification of MRP4 inhibitors against chemoresistance in leukemia</span>
+        <span class="es">Identificación <i>in silico</i> de inhibidores de MRP4 contra la quimiorresistencia en leucemia</span>
+      </h3>
+      <p class="meta">
+        <span class="status"><span class="en">Completed</span><span class="es">Concluido</span></span>
+        <span class="en">· B.Sc. thesis, co-authored · DACSiF-UAQ</span><span class="es">· Tesis de licenciatura colectiva · DACSiF-UAQ</span>
+      </p>
+      <p class="en">A virtual screening pipeline to find drugs that could block MRP4, a transporter that pumps chemotherapy out of cancer cells in acute lymphoblastic leukemia.</p>
+      <p class="es">Un flujo de cribado virtual para encontrar fármacos capaces de bloquear MRP4, un transportador que expulsa la quimioterapia de las células cancerosas en la leucemia linfoblástica aguda.</p>
+      <p class="detail"><b><span class="en">Methods:</span><span class="es">Métodos:</span></b>
+        <span class="en">Python multiparameter filtering, ensemble docking (GNINA, AutoDock-GPU) on four cryo-EM conformations, molecular dynamics, metadynamics, ProLIF interaction analysis</span>
+        <span class="es">Filtrado multiparamétrico en Python, acoplamiento por ensamble (GNINA, AutoDock-GPU) sobre cuatro conformaciones de crio-ME, dinámica molecular, metadinámica, análisis de interacciones con ProLIF</span>
+      </p>
+      <p class="detail"><b><span class="en">Result:</span><span class="es">Resultado:</span></b>
+        <span class="en">Imatinib and avatrombopag identified as priority candidates; imatinib showed the strongest affinity (ΔG = −64.55 kcal/mol), above the reference inhibitor Ceefourin-1™ (−56.65 kcal/mol).</span>
+        <span class="es">Imatinib y avatrombopag identificados como candidatos prioritarios; imatinib mostró la mayor afinidad (ΔG = −64.55 kcal/mol), superior al inhibidor de referencia Ceefourin-1™ (−56.65 kcal/mol).</span>
+      </p>
+      <p class="links"><span class="pending">[PENDING: repository or thesis link]</span></p>
+    </article>
+
+    <article class="project">
+      <h3>
+        <span class="en">Generating drug-like molecules as SMILES with recurrent neural networks</span>
+        <span class="es">Generación de moléculas tipo fármaco como SMILES con redes neuronales recurrentes</span>
+      </h3>
+      <p class="meta">
+        <span class="status ongoing"><span class="en">In progress</span><span class="es">En desarrollo</span></span>
+        <span class="en">· Team project, Neural Networks course</span><span class="es">· Proyecto en equipo, materia de Redes Neuronales</span>
+      </p>
+      <p class="en">A character-level language model that learns the “grammar” of SMILES strings and writes new, valid molecules.</p>
+      <p class="es">Un modelo de lenguaje a nivel de carácter que aprende la “gramática” de las cadenas SMILES y escribe moléculas nuevas y válidas.</p>
+      <p class="detail"><b><span class="en">Data:</span><span class="es">Datos:</span></b> MOSES</p>
+      <p class="detail"><b><span class="en">Methods:</span><span class="es">Métodos:</span></b> PyTorch, Google Colab <span class="pending">[PENDING: architecture]</span></p>
+      <p class="detail"><b><span class="en">Result:</span><span class="es">Resultado:</span></b> <span class="pending">[PENDING: validity, uniqueness, novelty]</span></p>
+      <p class="links"><span class="pending">[PENDING: repository link]</span></p>
+    </article>
+
+    <article class="project">
+      <h3>
+        <span class="en">White blood cell classification with convolutional neural networks</span>
+        <span class="es">Clasificación de glóbulos blancos con redes neuronales convolucionales</span>
+      </h3>
+      <p class="meta">
+        <span class="status ongoing"><span class="en">In progress</span><span class="es">En desarrollo</span></span>
+        <span class="en">· Team project, Neural Networks course</span><span class="es">· Proyecto en equipo, materia de Redes Neuronales</span>
+      </p>
+      <p class="en">Classifying peripheral blood cell images into 13 classes.</p>
+      <p class="es">Clasificación de imágenes de células de sangre periférica en 13 clases.</p>
+      <p class="detail"><b><span class="en">Data:</span><span class="es">Datos:</span></b> KU-Optofil PBC (31,489 <span class="en">images</span><span class="es">imágenes</span>)</p>
+      <p class="detail"><b><span class="en">Methods:</span><span class="es">Métodos:</span></b> PyTorch <span class="pending">[PENDING: architecture]</span></p>
+      <p class="detail"><b><span class="en">Result:</span><span class="es">Resultado:</span></b> <span class="pending">[PENDING: accuracy, F1]</span></p>
+      <p class="links"><span class="pending">[PENDING: repository link]</span></p>
+    </article>
+
+    <article class="project">
+      <h3>
+        <span class="en">Neural networks from scratch in NumPy</span>
+        <span class="es">Redes neuronales desde cero en NumPy</span>
+      </h3>
+      <p class="meta">
+        <span class="status ongoing"><span class="en">In progress</span><span class="es">En desarrollo</span></span>
+        <span class="en">· Coursework</span><span class="es">· Trabajo de curso</span>
+      </p>
+      <p class="en">Dense layers, activation functions, manual backpropagation and optimizers (SGD, momentum, Adam) written without automatic differentiation.</p>
+      <p class="es">Capas densas, funciones de activación, retropropagación manual y optimizadores (SGD, momentum, Adam) escritos sin diferenciación automática.</p>
+      <p class="links"><span class="pending">[PENDING: repository link]</span></p>
+    </article>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2><span class="en">Education</span><span class="es">Formación</span></h2>
+    <div class="entry">
+      <div class="when">2026 – 2028</div>
+      <div>
+        <h3><span class="en">M.Sc. in Artificial Intelligence</span><span class="es">Maestría en Ciencias en Inteligencia Artificial</span></h3>
+        <p><span class="en">Faculty of Engineering, Autonomous University of Querétaro. Expected July 2028.</span><span class="es">Facultad de Ingeniería, Universidad Autónoma de Querétaro. Egreso previsto en julio de 2028.</span></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when"><span class="pending">[PENDING]</span> – 2026</div>
+      <div>
+        <h3><span class="en">B.Sc. in Pharmaceutical Chemistry and Biology (QFB)</span><span class="es">Licenciatura en Químico Farmacéutico Biólogo</span></h3>
+        <p><span class="en">Faculty of Chemistry, Autonomous University of Querétaro. GPA 9.44/10.</span><span class="es">Facultad de Química, Universidad Autónoma de Querétaro. Promedio 9.44/10.</span></p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem"><span class="en">Research experience</span><span class="es">Experiencia en investigación</span></h2>
+    <div class="entry">
+      <div class="when">2024 – 2026</div>
+      <div>
+        <h3><span class="en">Thesis researcher, DACSiF-UAQ</span><span class="es">Tesista, DACSiF-UAQ</span></h3>
+        <p><span class="en">Computer-Aided Drug Design and Synthesis Group. Cheminformatics in Python for filtering and analyzing large molecular databases; docking and molecular simulation.</span><span class="es">Grupo de Diseño Asistido por Computadora y Síntesis de Fármacos. Quimioinformática en Python para filtrar y analizar grandes bases de datos moleculares; acoplamiento y simulación molecular.</span></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">2023 – 2024</div>
+      <div>
+        <h3><span class="en">Research assistant, Molecular Biochemistry Lab, UAQ</span><span class="es">Ayudante de investigador, Laboratorio de Bioquímica Molecular, UAQ</span></h3>
+        <p><span class="en">Technical support in biochemistry and molecular biology for graduate projects.</span><span class="es">Apoyo técnico en bioquímica y biología molecular para proyectos de posgrado.</span></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">2022 – 2023</div>
+      <div>
+        <h3><span class="en">Peer tutor, UAQ Tutoring Program</span><span class="es">Tutor par, Programa Institucional de Tutorías UAQ</span></h3>
+        <p><span class="en">Led group sessions in organic chemistry for more than 100 students.</span><span class="es">Sesiones grupales de química orgánica para más de 100 estudiantes.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Presentations and awards -->
+  <section id="talks">
+    <h2><span class="en">Presentations and awards</span><span class="es">Presentaciones y reconocimientos</span></h2>
+    <div class="entry">
+      <div class="when">Nov 2025</div>
+      <div><p><span class="en">Talk: “<i>In silico</i> identification of MRP4 inhibitors: a comprehensive approach”. 13th Meeting of Young Researchers, Querétaro.</span><span class="es">Ponencia: “Identificación <i>in silico</i> de inhibidores de MRP4: un enfoque integral”. 13.º Encuentro de Jóvenes Investigadores e Investigadoras, Querétaro.</span></p></div>
+    </div>
+    <div class="entry">
+      <div class="when">Jun 2025</div>
+      <div><p><span class="en">Poster: natural products as potential MRP4 inhibitors. Symposium on current trends in drug discovery, UNAM.</span><span class="es">Cartel: productos naturales como potenciales inhibidores de MRP4. Simposio sobre tendencias actuales en la búsqueda y desarrollo de fármacos, UNAM.</span></p></div>
+    </div>
+    <div class="entry">
+      <div class="when">2023 – 2026</div>
+      <div><p><span class="en">Outstanding performance, EGEL national exit exam (2026). ANFEQUI award for high academic achievement (2025). Highest GPA of the semester (2023-2, 2024-2). First place, poster session, XVIII Meeting of the Mexican Academy of Organic Chemistry (2023).</span><span class="es">Desempeño sobresaliente en el EGEL (2026). Galardón ANFEQUI por alto rendimiento académico (2025). Mejor promedio del semestre (2023-2, 2024-2). Primer lugar en carteles, XVIII Reunión de la Academia Mexicana de Química Orgánica (2023).</span></p></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2><span class="en">Contact</span><span class="es">Contacto</span></h2>
+    <ul class="contact-list">
+      <li><span>Email</span><a href="mailto:langelur7@gmail.com">langelur7@gmail.com</a></li>
+      <li><span><span class="en">University</span><span class="es">Institucional</span></span><a href="mailto:lurdez31@alumnos.uaq.mx">lurdez31@alumnos.uaq.mx</a></li>
+      <li><span>GitHub</span><a href="https://github.com/MolDesigner" target="_blank" rel="noopener">github.com/MolDesigner</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/luis-%C3%A1ngel-urdez-rojas-203253301/" target="_blank" rel="noopener">Luis Ángel Urdez Rojas</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Luis Ángel Urdez Rojas · Querétaro, México</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang) {
+      root.classList.remove('lang-en', 'lang-es');
+      root.classList.add('lang-' + lang);
+      root.setAttribute('lang', lang);
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+      });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    setLang(saved === 'es' ? 'es' : 'en');
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+    });
+  })();
+</script>
+</body>
+</html>
